@@ -8,7 +8,9 @@ export default {
             brand: 'NIKE',
             rating: 4.3,
             reviews: 38,
-            description: 'Bank Offer 10% Instant Discount with HDFC Bank Credit Cards and Credit/Debit EMI TransactionsT&C'
+            countInStock: 14,
+            description: 'Bank Offer 10% Instant Discount with HDFC Bank Credit Cards and Credit/Debit EMI TransactionsT&C',
+
         },
         {
             _id: 'A14h8',
@@ -18,6 +20,7 @@ export default {
             brand: 'ADIDAS',
             rating: 4.7,
             reviews: 148,
+            countInStock: 17,
             description: 'Bank Offer 10% Instant Discount with HDFC Bank Credit Cards and Credit/Debit EMI Transactions'
         },
         {
@@ -28,6 +31,7 @@ export default {
             brand: 'BRANDQ',
             rating: 4.2,
             reviews: 57,
+            countInStock: 11,
             description: 'Bank Offer 10% Instant Discount with HDFC Bank Credit Cards and Credit/Debit EMI TransactionsT&C'
         },
         {
@@ -38,6 +42,7 @@ export default {
             brand: 'NIKE',
             rating: 4.8,
             reviews: 583,
+            countInStock: 6,
             description: 'Bank Offer 10% Instant Discount with HDFC Bank Credit Cards and Credit/Debit EMI TransactionsT&C'
         },
         {
@@ -48,6 +53,7 @@ export default {
             brand: 'NEWBRAND',
             rating: 3.6,
             reviews: 17,
+            countInStock: 18,
             description: 'Bank Offer 10% Instant Discount with HDFC Bank Credit Cards and Credit/Debit EMI TransactionsT&C'
         }
     ]
