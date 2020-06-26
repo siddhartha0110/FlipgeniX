@@ -1,10 +1,24 @@
 import express from 'express';
-const app = express();
 import data from './data';
 import cors from 'cors';
+import config from './config';
+import dotenv from 'dotenv';
+import mongoose from 'mongoose';
+import userRoutes from './routes/userRoute';
+import bodyParser from 'body-parser';
 
+const app = express();
+dotenv.config();
 app.use(cors());
+app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
+const mongoDB = config.MONGODB_URL;
+mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
+    .then(() => console.log('MONGO DB Connected'))
+    .catch(err => console.log(err))
+
+app.use('/api/users', userRoutes);
 app.get('/api/products', (req, res) => {
     res.send(data.products);
 })

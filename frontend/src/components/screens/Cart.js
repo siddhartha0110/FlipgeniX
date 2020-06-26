@@ -16,6 +16,10 @@ const Cart = (props) => {
         dispatch(removeFromCart(productId));
     }
 
+    const checkoutHandler = () => {
+        props.history.push('/signin?redirect=shipping')
+    }
+
     useEffect(() => {
         if (productId) {
             dispatch(addToCart(productId, qty));
@@ -72,7 +76,7 @@ const Cart = (props) => {
                     :
                     ₹ {cartItems.reduce((sum, item) => sum + item.price * item.qty, 0)}
                 </h3>
-                <button className="btn primary" disabled={cartItems.length === 0}>
+                <button className="btn primary" disabled={cartItems.length === 0} onClick={checkoutHandler}>
                     Proceed To Checkout <i className="far fa-credit-card"></i>
                 </button>
             </div>

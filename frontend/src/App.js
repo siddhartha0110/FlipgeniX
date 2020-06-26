@@ -6,6 +6,7 @@ import Header from './components/layout/Header';
 import Home from './components/screens/Home';
 import ProductDetail from './components/screens/ProductDetail';
 import Cart from './components/screens/Cart';
+import Signin from './components/auth/Signin';
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
             <Route path="/" exact component={Home} />
             <Route path="/cart/:id?" component={Cart} />
             <Route path="/product/:id" component={ProductDetail} />
+            <Route path="/signin" component={Signin} />
           </div>
         </main>
         <Footer />
@@ -28,3 +30,4 @@ function App() {
 }
 
 export default App;
+

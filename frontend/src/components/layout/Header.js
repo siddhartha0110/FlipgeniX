@@ -20,7 +20,9 @@ const Header = () => {
                 </div>
                 <div className="header-links">
                     <a href="cart.html">Cart<i className="fas fa-shopping-cart"></i></a>
-                    <a href="signin.html">Sign In<i className="fas fa-sign-in-alt"></i></a>
+                    <Link to="/signin">
+                        <a href="">Sign In<i className="fas fa-sign-in-alt"></i></a>
+                    </Link>
                 </div>
             </header>
 

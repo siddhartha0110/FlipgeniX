@@ -8,6 +8,19 @@ body {
   height: 100vh;
   margin: 0;
 }
+button {
+  font-size: 1.5rem;
+}
+
+.button.secondary {
+  background-color: #2475b0;
+}
+.button.secondary:hover {
+  color: #ffffff;
+}
+.text-center {
+  text-align: center;
+}
 #root {
   height: 100%;
 }
@@ -262,4 +275,32 @@ a:hover {
   flex: 1 1;
   font-size: 2.5rem;
   text-align: right;
+}
+
+/*forms*/
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.form-container {
+  display: flex;
+  flex-direction: column;
+  width: 32rem;
+  padding: 2rem;
+  border: 0.1rem #2475b0 solid;
+  border-radius: 0.5rem;
+  list-style-type: none;
+}
+.form-container li {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+input {
+  padding: 1rem;
+  border: 0.1rem #192a56 solid;
+  border-radius: 0.5rem;
 }
