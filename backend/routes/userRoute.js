@@ -2,6 +2,7 @@ import express from 'express';
 import User from '../models/Users';
 import bcrypt from 'bcryptjs';
 import { getToken } from '../util';
+import { get } from 'mongoose';
 
 const router = express.Router();
 
@@ -35,7 +36,7 @@ router.get('/createadmin', async (req, res) => {
     try {
 
         const salt = await bcrypt.genSalt(10);
-        const hashPass = await bcrypt.hash('Sahil3012', salt);
+        const hashPass = await bcrypt.hash('password', salt);
         const user = new User({
             name: 'Siddhartha Saxena',
             email: 'siddharthasaxena.1998@gmail.com',
@@ -51,4 +52,41 @@ router.get('/createadmin', async (req, res) => {
     }
 
 })
+
+router.post('/register', async (req, res) => {
+    const signinUser = await User.findOne({
+        email: req.body.email,
+    });
+
+    if (signinUser) {
+        return res.status(400).send({ message: 'Email already registered' });
+    }
+
+    if (!req.body.email || !req.body.name || !req.body.password) {
+        return res.status(400).send({ message: 'All Fields must be filled' });
+    }
+
+    const salt = await bcrypt.genSalt(10);
+    const hashPass = await bcrypt.hash(req.body.password, salt);
+
+    const user = new User({
+        name: req.body.name,
+        email: req.body.email,
+        password: hashPass
+    })
+    const newUser = await user.save();
+    if (newUser) {
+        res.send({
+            _id: newUser._id,
+            name: newUser.name,
+            email: newUser.email,
+            isAdmin: newUser.isAdmin,
+            token: getToken(newUser)
+        })
+    }
+    else {
+        res.status(401).send({ message: 'Invalid Details' });
+    }
+})
+
 export default router;

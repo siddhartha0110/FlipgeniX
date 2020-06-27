@@ -1,8 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
-
+    const userSignIn = useSelector(state => state.userSignIn)
+    const { userInfo } = userSignIn;
     const openMenu = () => {
         document.querySelector(".sidebar").classList.add("open");
     }
@@ -19,10 +21,15 @@ const Header = () => {
                     <Link to="/">FlipgeniX</Link>
                 </div>
                 <div className="header-links">
-                    <a href="cart.html">Cart<i className="fas fa-shopping-cart"></i></a>
-                    <Link to="/signin">
-                        <a href="">Sign In<i className="fas fa-sign-in-alt"></i></a>
-                    </Link>
+                    <a href="/cart">Cart<i className="fas fa-shopping-cart"></i></a>
+                    {
+                        userInfo ?
+                            <Link to="/profile">Welcome {userInfo.name}</Link>
+                            :
+                            <Link to="/signin">
+                                Sign In<i className="fas fa-sign-in-alt"></i>
+                            </Link>
+                    }
                 </div>
             </header>
 

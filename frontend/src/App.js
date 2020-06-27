@@ -7,6 +7,7 @@ import Home from './components/screens/Home';
 import ProductDetail from './components/screens/ProductDetail';
 import Cart from './components/screens/Cart';
 import Signin from './components/auth/Signin';
+import Register from './components/auth/Register';
 
 function App() {
 
@@ -18,9 +19,10 @@ function App() {
         <main className="main">
           <div className="content">
             <Route path="/" exact component={Home} />
+            <Route path="/signin" exact component={Signin} />
+            <Route path="/register" exact component={Register} />
             <Route path="/cart/:id?" component={Cart} />
             <Route path="/product/:id" component={ProductDetail} />
-            <Route path="/signin" component={Signin} />
           </div>
         </main>
         <Footer />
