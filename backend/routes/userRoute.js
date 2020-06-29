@@ -2,7 +2,6 @@ import express from 'express';
 import User from '../models/Users';
 import bcrypt from 'bcryptjs';
 import { getToken } from '../util';
-import { get } from 'mongoose';
 
 const router = express.Router();
 

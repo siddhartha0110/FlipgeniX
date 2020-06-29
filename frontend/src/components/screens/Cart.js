@@ -76,7 +76,7 @@ const Cart = (props) => {
                     :
                     ₹ {cartItems.reduce((sum, item) => sum + item.price * item.qty, 0)}
                 </h3>
-                <button className="btn primary" disabled={cartItems.length === 0} onClick={checkoutHandler}>
+                <button className="btn primary" disabled={cartItems.length} onClick={checkoutHandler}>
                     Proceed To Checkout <i className="far fa-credit-card"></i>
                 </button>
             </div>

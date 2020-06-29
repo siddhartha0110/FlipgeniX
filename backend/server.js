@@ -4,8 +4,9 @@ import cors from 'cors';
 import config from './config';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-import userRoutes from './routes/userRoute';
 import bodyParser from 'body-parser';
+import userRoutes from './routes/userRoute';
+import productRoute from './routes/productRoute';
 
 const app = express();
 dotenv.config();
@@ -19,18 +20,20 @@ mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true, use
     .catch(err => console.log(err))
 
 app.use('/api/users', userRoutes);
-app.get('/api/products', (req, res) => {
-    res.send(data.products);
-})
+app.use('/api/products', productRoute);
 
-app.get('/api/products/:id', (req, res) => {
-    const productId = req.params.id;
-    const product = data.products.find(product => product._id === productId)
-    if (product)
-        res.send(product);
-    else
-        res.status(404).send({ message: 'Product Not Found' })
-})
+//app.get('/api/products', (req, res) => {
+//    res.send(data.products);
+//})
+//
+//app.get('/api/products/:id', (req, res) => {
+//    const productId = req.params.id;
+//    const product = data.products.find(product => product._id === productId)
+//    if (product)
+//        res.send(product);
+//    else
+//        res.status(404).send({ message: 'Product Not Found' })
+//})
 
 const PORT = 8000;
 

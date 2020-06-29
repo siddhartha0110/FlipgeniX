@@ -12,4 +12,28 @@ const getToken = (user) => {
     })
 }
 
-export { getToken };
+const isAuth = (req, res, next) => {
+    const token = req.headers.authorization
+    if (token) {
+        const jwtToken = token.slice(7, token.length)
+        jwt.verify(jwtToken, config.jwt_secret, (err, token) => {
+            if (err)
+                return res.status(401).send({ message: 'Invalid Token' });
+            req.user = token;
+            next();
+            return;
+        })
+    }
+    else {
+        return res.status(401).send({ msg: 'No Auth Token is present' });
+    }
+}
+
+const isAdmin = (req, res, next) => {
+    if (req.user && req.user.isAdmin) {
+        return next();
+    }
+    return res.status(401).send({ msg: 'Only Admin is allowed to access' });
+}
+
+export { getToken, isAuth, isAdmin };
